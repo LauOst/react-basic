@@ -1,18 +1,13 @@
-import { useState } from 'react'
+import { RouterProvider } from 'react-router-dom'
 
-import { Button } from 'antd'
+import router from '@/router'
+import AntdConfig from '@/styles/antd'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div className='card'>
-        <Button type='primary' onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </Button>
-      </div>
-    </>
+    <AntdConfig>
+      <RouterProvider router={router} />
+    </AntdConfig>
   )
 }
 
