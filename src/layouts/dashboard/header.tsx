@@ -20,7 +20,7 @@ type Props = {
 export default function Header({ className = '', offsetTop = false }: Props) {
   const [drawerOpen, setDrawerOpen] = useState(false)
   const { themeLayout } = useSettings()
-  const { colorBgElevated } = useThemeToken()
+  const { colorBgElevated, colorBgLayout } = useThemeToken()
   const { screenMap } = useResponsive()
 
   const headerStyle: CSSProperties = {
@@ -49,6 +49,13 @@ export default function Header({ className = '', offsetTop = false }: Props) {
             <IconButton onClick={() => setDrawerOpen(true)} className='h-10 w-10 md:hidden'>
               <SvgIcon icon='ic-menu' size='24' />
             </IconButton>
+            {/*<div className='hidden md:block pr-5'>*/}
+            {/*  <button*/}
+            {/*    className='right-0 top-7 z-50 hidden h-6 w-6 translate-x-1/2 cursor-pointer select-none rounded-full text-center !text-gray md:block'*/}
+            {/*    style={{ color: colorTextBase, borderColor: colorTextBase, fontSize: 16 }}>*/}
+            {/*    {collapsed ? <MenuUnfoldOutlined size={20} /> : <MenuFoldOutlined size={20} />}*/}
+            {/*  </button>*/}
+            {/*</div>*/}
             <div className='hidden md:block'>{<BreadCrumb />}</div>
           </div>
           <div className='flex'>
@@ -62,7 +69,7 @@ export default function Header({ className = '', offsetTop = false }: Props) {
         onClose={() => setDrawerOpen(false)}
         open={drawerOpen}
         closeIcon={false}
-        styles={{ header: { display: 'none' }, body: { padding: 0, overflow: 'hidden' } }}
+        styles={{ header: { display: 'none' }, body: { padding: 0, overflow: 'hidden', background: colorBgLayout } }}
         width='auto'>
         <Nav closeSideBarDrawer={() => setDrawerOpen(false)} />
       </Drawer>

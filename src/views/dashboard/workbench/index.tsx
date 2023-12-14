@@ -1,27 +1,34 @@
-import { Col, Row, Space } from 'antd'
-import BannerCard from './banner-card'
-import { Applications, Conversion } from './conversion_applications'
-import NewInvoice from '@/views/dashboard/workbench/new-invoice.tsx'
+import { Button } from 'antd'
+import userService, { SignInReq } from '@/api/services/userService'
+import { useMutation } from '@tanstack/react-query'
+import { useState } from 'react'
 
 const Workbench = () => {
+  const [flag, setFlag] = useState(false)
+  const data: SignInReq = {
+    username: 'admin',
+    password: '123456',
+  }
+  const handleClick = () => {
+    setFlag(!flag)
+    // console.log('click', userService.signin(data))
+    //
+    // const signInMutation = useMutation(userService.signin)
+    // console.log(signInMutation.mutateAsync(data))
+  }
+
+  const handleClickMutation = () => {
+    const signInMutation = useMutation({
+      mutationFn: userService.signin,
+    })
+    console.log(signInMutation.mutateAsync(data))
+  }
+
   return (
     <>
-      <Row gutter={[16, 16]} justify='center'>
-        <Col span={24} md={16}>
-          <BannerCard />
-        </Col>
-        <Col span={24} md={8}>
-          <Space direction='vertical' size='middle' className='h-full w-full'>
-            <Conversion />
-            <Applications />
-          </Space>
-        </Col>
-      </Row>
-      <Row gutter={[16, 16]} className='mt-4' justify='center'>
-        <Col span={23} md={12} lg={16}>
-          <NewInvoice />
-        </Col>
-      </Row>
+      <div>Workbench {flag ? 'true' : 'false'} </div>
+      <Button onClick={handleClick}>Click</Button>
+      <Button onClick={handleClickMutation}>Click Mutation</Button>
     </>
   )
 }

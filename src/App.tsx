@@ -1,4 +1,5 @@
 import { RouterProvider } from 'react-router-dom'
+import { App as AntdApp } from 'antd'
 
 import router from '@/router'
 import AntdConfig from '@/styles/antd'
@@ -6,7 +7,9 @@ import AntdConfig from '@/styles/antd'
 function App() {
   return (
     <AntdConfig>
-      <RouterProvider router={router} />
+      <AntdApp>
+        <RouterProvider router={router} />
+      </AntdApp>
     </AntdConfig>
   )
 }

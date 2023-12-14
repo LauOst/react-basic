@@ -26,7 +26,8 @@ const customComponentConfig: ThemeConfig['components'] = {
   Menu: {
     fontSize: 14,
     colorFillAlter: 'transparent',
-    itemColor: 'rgb(145, 158, 171)',
+    itemColor: 'rgba(255,255,255,.81)',
+    // itemHoverBg: 'rgba(255,255,255,.81)', // 菜单项悬浮态背景色
   },
 }
 
@@ -57,7 +58,20 @@ const themeModeToken: Record<'dark' | 'light', ThemeConfig> = {
       Notification: {},
     },
   },
-  light: {},
+  light: {
+    token: {
+      colorBgLayout: '#343a40',
+    },
+    components: {
+      Menu: {
+        fontSize: 14,
+        colorFillAlter: 'transparent',
+        itemColor: 'rgba(255,255,255,.81)', // 菜单项文字色
+        itemHoverColor: 'rgba(255,255,255,.81)', // 菜单项悬浮态文字色
+        itemHoverBg: 'rgba(255,255,255,.2)', // 菜单项悬浮态背景色
+      },
+    },
+  },
 }
 
 export { customThemeTokenConfig, customComponentConfig, colorPrimarys, themeModeToken }

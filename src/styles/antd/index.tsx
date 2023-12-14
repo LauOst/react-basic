@@ -14,6 +14,7 @@ export default function AntdConfig({ children }: Props) {
   const { themeMode, themeColorPresets } = useSettings()
   const algorithm = themeMode === ThemeMode.Light ? theme.defaultAlgorithm : theme.darkAlgorithm
   const colorPrimary = colorPrimarys[themeColorPresets]
+
   return (
     <ConfigProvider
       theme={{

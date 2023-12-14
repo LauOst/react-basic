@@ -22,14 +22,15 @@ export default function Nav(props: Props) {
   const matches = useMatches()
   const { pathname } = useLocation()
 
-  const { colorTextBase, colorBgElevated, colorBorder } = useThemeToken()
+  const { colorTextBase, colorBorder, colorBgLayout } = useThemeToken()
+  console.log('useThemeToken', useThemeToken())
 
   const settings = useSettings()
   const { themeLayout } = settings
   const { setSettings } = useSettingActions()
 
   const menuStyle: CSSProperties = {
-    background: colorBgElevated,
+    background: colorBgLayout,
   }
 
   const routeToMenu = useRouteToMenu()
